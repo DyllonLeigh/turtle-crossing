@@ -21,10 +21,9 @@ turtle.goto(0, -430)
 cars = []
 new_y = LANE_1_Y
 for _ in range(0, TOTAL_LANES):
-    car = Car(LANE_1_X * -1, new_y)
+    car = Car(LANE_1_X, new_y)
     cars.append(car)
     new_y -= 25
-screen.update()
 game_over = False
 
 def move_up():
