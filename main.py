@@ -55,14 +55,9 @@ start_update = False
 while not game_over:
     for car in cars:
         car.move_forward()
-        if car.traveling_left:
-            if car.xcor() < -600:
-                car.reset_car()
-                start_update = True
-        else:
-            if car.xcor() > 600:
-                car.reset_car()
-                start_update = True
+        if car.xcor() < -600 or car.xcor() > 600:
+            car.reset_car()
+            start_update = True
     if start_update:
         screen.update()
         time.sleep(0.05)
