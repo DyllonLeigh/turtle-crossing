@@ -21,10 +21,10 @@ turtle.goto(0, -430)
 cars = []
 new_y = LANE_1_Y
 for _ in range(0, TOTAL_LANES):
-    car = Car((LANE_1_X, new_y))
+    car = Car(LANE_1_X * -1, new_y)
     cars.append(car)
     new_y -= 25
-
+screen.update()
 game_over = False
 
 def move_up():
@@ -56,9 +56,14 @@ start_update = False
 while not game_over:
     for car in cars:
         car.move_forward()
-        if car.xcor() < -600:
-            car.goto(LANE_1_X, car.ycor())
-            start_update = True
+        if car.traveling_left:
+            if car.xcor() < -600:
+                car.reset_car()
+                start_update = True
+        else:
+            if car.xcor() > 600:
+                car.reset_car()
+                start_update = True
     if start_update:
         screen.update()
         time.sleep(0.05)
