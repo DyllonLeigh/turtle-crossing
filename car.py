@@ -7,14 +7,13 @@ class Car(Turtle):
         self.shape("square")
         self.shapesize(1, (randint(2,5)))
         self.penup()
-        if randint(0, 1) == 0:
-            self.setheading(0)
-            self.new_x = x_pos * -1
-        else:
-            self.setheading(180)
-            self.new_x = x_pos
         self.pace = randint(10, 30)
         self.color(randint(0, 255), randint(0, 255), randint(0, 255))
+        self.new_x = x_pos
+        self.setheading(180)
+        if randint(0, 1) == 0:
+            self.new_x = x_pos * -1
+            self.setheading(0)
         self.goto(self.new_x, y_pos)
 
     def move_forward(self):

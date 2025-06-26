@@ -62,6 +62,4 @@ while not game_over:
         screen.update()
         time.sleep(0.05)
 
-print("You Win!")
-
 screen.exitonclick()
